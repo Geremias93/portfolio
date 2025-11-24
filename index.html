@@ -6,47 +6,128 @@
   <title>Germán Muñoz | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+  <!-- HERO / CABECERA -->
   <header class="hero">
-  <h1>Germán Muñoz</h1>
-  <p>Desarrollador Junior · Android / Multiplataforma</p>
+    <div class="hero-content">
+      <h1>Germán Muñoz</h1>
+      <p>Desarrollador Junior · Android / Multiplataforma</p>
 
-  <div class="hero-buttons">
-    <a class="btn" href="#proyectos">Ver proyectos</a>
-    <a class="btn btn-outline" href="#contacto">Contacto</a>
-  </div>
+      <div class="hero-buttons">
+        <a class="btn" href="#proyectos">Ver proyectos</a>
+        <a class="btn btn-outline" href="#contacto">Contacto</a>
+      </div>
 
-  <div class="hero-links">
-    <a href="https://github.com/geremias93" target="_blank">GitHub</a>
-    <a href="PON_AQUI_TU_LINKEDIN" target="_blank">LinkedIn</a>
-    <a href="assets/CV-German-Munoz.pdf" target="_blank">CV PDF</a>
-  </div>
-</header>
+      <div class="hero-links">
+        <a href="https://github.com/geremias93" target="_blank">GitHub</a>
+        <a href="PON_AQUI_TU_LINKEDIN" target="_blank">LinkedIn</a>
+        <a href="assets/CV-German-Munoz.pdf" target="_blank">CV PDF</a>
+      </div>
+    </div>
+  </header>
 
-
-  <section class="section">
+  <!-- SOBRE MI -->
+  <section class="section" id="sobre-mi">
     <h2>Sobre mí</h2>
     <p>
       Soy desarrollador con experiencia en Android Studio, Java, Firebase, SQL y desarrollo web.
-      He creado proyectos reales como ParkFinder y PlantAdvisor.
+      He creado proyectos reales como ParkFinder y PlantAdvisor. Me gusta construir apps útiles,
+      claras y bien organizadas, aplicando buenas prácticas y arquitectura limpia.
     </p>
   </section>
 
+  <!-- SKILLS -->
   <section class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Java</span>
+      <span>Android Studio</span>
+      <span>Firebase</span>
+      <span>SQL / MySQL</span>
+      <span>JavaScript</span>
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>Git / GitHub</span>
+      <span>React Native</span>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section class="section" id="proyectos">
     <h2>Proyectos</h2>
 
-    <div class="proyecto">
-      <h3>ParkFinder</h3>
-      <p>App para publicar y reservar plazas de aparcamiento mediante un mapa interactivo.</p>
-      <p><b>Tecnologías:</b> React Native, Firebase, Google Maps</p>
-    </div>
+    <!-- ParkFinder -->
+    <article class="proyecto">
+      <div class="proyecto-header">
+        <h3>ParkFinder</h3>
+        <span class="tag">App publicada</span>
+      </div>
 
-    <div class="proyecto">
-      <h3>PlantAdvisor</h3>
-      <p>App Android que recomienda plantas según condiciones del hogar.</p>
-      <p><b>Tecnologías:</b> Android Studio, Java, Firebase</p>
+      <p>
+        Aplicación móvil para publicar y reservar plazas de aparcamiento mediante un mapa interactivo,
+        con sistema de reservas y gestión de usuarios.
+      </p>
+
+      <p><b>Tecnologías:</b> React Native, Firebase, Google Maps API.</p>
+
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.ahpapp&hl=es" target="_blank">Google Play</a>
+        <a href="https://apps.apple.com/es/app/park-finder/id6670697077" target="_blank">App Store</a>
+        <a href="https://www.parkfinderapk.com/" target="_blank">Web oficial</a>
+        <a href="PON_AQUI_REPO_PARKFINDER" target="_blank">Código</a>
+      </div>
+    </article>
+
+    <!-- PlantAdvisor -->
+    <article class="proyecto">
+      <div class="proyecto-header">
+        <h3>PlantAdvisor</h3>
+        <span class="tag">Proyecto DAM</span>
+      </div>
+
+      <p>
+        App Android que recomienda plantas según condiciones del hogar mediante cuestionario.
+        Incluye sistema de favoritos y filtrado inteligente.
+      </p>
+
+      <p><b>Tecnologías:</b> Android Studio, Java, Firebase Firestore/Storage.</p>
+
+      <div class="links">
+        <a href="PON_AQUI_REPO_PLANTADVISOR" target="_blank">Código</a>
+      </div>
+    </article>
+
+    <!-- Juego de fútbol -->
+    <article class="proyecto">
+      <div class="proyecto-header">
+        <h3>Juego de Fútbol (Proyecto DAM)</h3>
+        <span class="tag">Android</span>
+      </div>
+
+      <p>
+        Juego Android donde se seleccionan alineaciones, se gira una ruleta para elegir países,
+        se escogen jugadores desde base de datos y se simula el partido automáticamente.
+      </p>
+
+      <p><b>Tecnologías:</b> Android Studio, Java, Firebase / SQL.</p>
+
+      <div class="links">
+        <a href="PON_AQUI_REPO_JUEGO_FUTBOL" target="_blank">Código</a>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section" id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Hablamos? Estoy disponible para prácticas o puesto junior.</p>
+
+    <div class="links">
+      <a href="mailto:xerman64@gmail.com">xerman64@gmail.com</a>
+      <a href="https://github.com/geremias93" target="_blank">GitHub</a>
+      <a href="PON_AQUI_TU_LINKEDIN" target="_blank">LinkedIn</a>
     </div>
   </section>
 
