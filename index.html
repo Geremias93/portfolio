@@ -3,78 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>German | Portfolio</title>
+  <title>Germán | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <nav class="topbar">
-    <div class="topbar-left">
-      <span class="dot red"></span>
-      <span class="dot yellow"></span>
-      <span class="dot green"></span>
-    </div>
-    <div class="topbar-right">
-      <span class="tiny">Portfolio</span>
-    </div>
-  </nav>
+  <main class="page">
 
-  <!-- GOOGLE-LIKE HERO -->
-  <main class="wrap">
-
+    <!-- HERO GOOGLE CLASSIC -->
     <section class="hero">
-      <h1 class="logo">
-        <span class="b">G</span><span class="r">e</span><span class="y">r</span><span class="b">m</span><span class="g">a</span><span class="r">n</span>
+      <h1 class="logo" aria-label="German logo">
+        <span class="b">G</span><span class="r">e</span><span class="y">r</span><span class="b">m</span><span class="g">á</span><span class="r">n</span>
       </h1>
 
-      <p class="subtitle">Desarrollador Junior · Android / Multiplataforma</p>
-
-      <!-- Fake search box -->
-      <div class="searchbox" id="searchbox">
-        <span class="search-icon">🔍</span>
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Buscar proyectos, tecnologías, experiencias…"
-          aria-label="Buscar"
-        />
-        <span class="mic">🎤</span>
+      <div class="searchbox" role="search">
+        <span class="search-icon" aria-hidden="true">
+          <!-- simple magnifier -->
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </span>
+        <input id="searchInput" type="text" placeholder="Buscar proyectos, tecnologías, experiencia…" />
+        <span class="mic" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3z"></path>
+            <path d="M19 11a7 7 0 0 1-14 0"></path>
+            <line x1="12" y1="18" x2="12" y2="22"></line>
+            <line x1="8" y1="22" x2="16" y2="22"></line>
+          </svg>
+        </span>
       </div>
 
-      <div class="hint">
-        Prueba a escribir: <b>android</b>, <b>firebase</b>, <b>react</b> o <b>parkfinder</b>.
+      <div class="buttons">
+        <button id="btnSearch" class="btn">Germán Search</button>
+        <button id="btnLucky" class="btn">I'm Feeling Lucky</button>
       </div>
+
+      <p class="hint">
+        Prueba a escribir: <b>android</b>, <b>firebase</b>, <b>react native</b> o <b>parkfinder</b>.
+      </p>
     </section>
-
 
     <!-- RESULTS -->
     <section class="results">
-
-      <div class="results-header">
-        <div class="tabs">
-          <span class="tab active">Todo</span>
-          <span class="tab">Proyectos</span>
-          <span class="tab">Tecnologías</span>
-          <span class="tab">Sobre mí</span>
-        </div>
-        <div class="results-count" id="resultsCount">Aproximadamente 2 resultados</div>
+      <div class="results-meta">
+        <span id="resultsCount">Aproximadamente 2 resultados</span>
       </div>
 
-      <!-- RESULT: ParkFinder -->
-      <article class="result-card" data-tags="parkfinder react react-native firebase mapas google-maps app publicada">
+      <!-- ParkFinder -->
+      <article class="result-card"
+        data-id="parkfinder"
+        data-tags="parkfinder react native firebase maps google maps app publicada"
+        tabindex="0"
+        role="button"
+        aria-label="Abrir detalles de ParkFinder"
+      >
         <div class="result-url">parkfinder · app móvil</div>
         <h2 class="result-title">ParkFinder — Publicar y reservar plazas de aparcamiento</h2>
         <p class="result-snippet">
-          Aplicación móvil enfocada a la gestión de aparcamiento: publicación de plazas, reservas en tiempo real,
-          mapa interactivo y sistema de usuarios.
+          App para publicar y reservar plazas mediante mapa interactivo, reservas en tiempo real y gestión de usuarios.
         </p>
         <div class="chips">
           <span>React Native</span>
           <span>Firebase</span>
           <span>Google Maps API</span>
           <span>Auth + Firestore</span>
-          <span>Deploy Android/iOS</span>
+          <span>Android / iOS</span>
         </div>
         <div class="result-links">
           <a href="https://play.google.com/store/apps/details?id=com.ahpapp&hl=es" target="_blank" rel="noreferrer">Google Play</a>
@@ -83,20 +78,25 @@
         </div>
       </article>
 
-      <!-- RESULT: PlantAdvisor -->
-      <article class="result-card" data-tags="plantadvisor android java firebase firestore mvvm app plantas">
+      <!-- PlantAdvisor -->
+      <article class="result-card"
+        data-id="plantadvisor"
+        data-tags="plantadvisor android java firebase firestore plantas mvvm"
+        tabindex="0"
+        role="button"
+        aria-label="Abrir detalles de PlantAdvisor"
+      >
         <div class="result-url">plantadvisor · proyecto dam</div>
         <h2 class="result-title">PlantAdvisor — Recomendador inteligente de plantas</h2>
         <p class="result-snippet">
-          App Android que recomienda plantas según condiciones del hogar mediante cuestionario.
-          Incluye filtrado por luz/estación, favoritos y previsualización de plantas.
+          App Android que recomienda plantas según condiciones del hogar con cuestionario, filtros y favoritos.
         </p>
         <div class="chips">
           <span>Android Studio</span>
           <span>Java</span>
           <span>Firebase Firestore</span>
           <span>Firebase Storage</span>
-          <span>MVVM ligero</span>
+          <span>MVVM</span>
         </div>
       </article>
 
@@ -106,11 +106,24 @@
       </div>
 
     </section>
+
   </main>
 
-  <footer class="footer">
-    <span>© 2025 German Muñoz</span>
-  </footer>
+  <!-- MODAL DETALLES PROYECTO -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+
+      <h3 id="modalTitle" class="modal-title">Título del proyecto</h3>
+      <p id="modalDesc" class="modal-desc"></p>
+
+      <!-- GALERÍA IMÁGENES -->
+      <div class="gallery" id="modalGallery"></div>
+
+      <!-- VIDEO (opcional) -->
+      <div class="video-wrap" id="modalVideoWrap"></div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
