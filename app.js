@@ -14,7 +14,7 @@ const modalDesc = document.getElementById("modalDesc");
 const modalGallery = document.getElementById("modalGallery");
 const modalVideoWrap = document.getElementById("modalVideoWrap");
 
-// Datos de proyectos con TUS nombres reales
+// Datos de proyectos
 const PROJECTS = {
   parkfinder: {
     title: "ParkFinder — Publicar y reservar plazas",
@@ -27,7 +27,6 @@ const PROJECTS = {
     ],
     video: {
       type: "youtube",
-      // YouTube Shorts embebido (forma correcta)
       src: "https://www.youtube.com/embed/lF0HVb0M7-M"
     }
   },
@@ -44,14 +43,16 @@ const PROJECTS = {
   }
 };
 
-function normalize(s){ return s.toLowerCase().trim(); }
+function normalize(s){ 
+  return (s || "").toLowerCase().trim(); 
+}
 
 function updateResults(){
   const q = normalize(input.value);
   let visible = 0;
 
   cards.forEach(card => {
-    const tags = normalize(card.dataset.tags || "");
+    const tags = normalize(card.dataset.tags);
     const text = normalize(card.innerText);
     const match = q === "" || tags.includes(q) || text.includes(q);
 
@@ -67,10 +68,23 @@ function openModal(projectId){
   const data = PROJECTS[projectId];
   if(!data) return;
 
+  // Título y descripción
   modalTitle.textContent = data.title;
   modalDesc.textContent = data.desc;
 
-  // Render gallery
+  // 1) VIDEO ARRIBA
+  modalVideoWrap.innerHTML = "";
+  if(data.video && data.video.type === "youtube"){
+    const iframe = document.createElement("iframe");
+    iframe.src = data.video.src;
+    iframe.title = data.title;
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+    modalVideoWrap.appendChild(iframe);
+  }
+
+  // 2) GALERÍA DEBAJO
   modalGallery.innerHTML = "";
   (data.images || []).forEach(src => {
     const img = document.createElement("img");
@@ -79,22 +93,13 @@ function openModal(projectId){
     modalGallery.appendChild(img);
   });
 
-  // Render video if any
-  modalVideoWrap.innerHTML = "";
-  if(data.video){
-    if(data.video.type === "youtube"){
-      const iframe = document.createElement("iframe");
-      iframe.src = data.video.src;
-      iframe.title = data.title;
-      iframe.allow =
-        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.allowFullscreen = true;
-      modalVideoWrap.appendChild(iframe);
-    }
-  }
-
+  // 3) ABRIR MODAL
   modalBackdrop.style.display = "flex";
   modalBackdrop.setAttribute("aria-hidden", "false");
+
+  // 4) SIEMPRE ARRIBA DEL TODO (esto arregla ParkFinder)
+  const modalBox = modalBackdrop.querySelector(".modal");
+  if(modalBox) modalBox.scrollTop = 0;
 }
 
 function closeModal(){
