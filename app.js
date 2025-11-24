@@ -42,7 +42,7 @@ const PROJECTS = {
     video: null
   },
 
-  // ✅ NUEVO: SOBRE MÍ (sin imágenes ni vídeo)
+  // ✅ SOBRE MÍ
   sobremi: {
     title: "Sobre mí — Desarrollador Junior Multiplataforma",
     desc:
@@ -67,15 +67,8 @@ function updateResults(){
   cards.forEach(card => {
     const tags = normalize(card.dataset.tags);
     const text = normalize(card.innerText);
-    const hiddenDefault = card.dataset.hiddenDefault === "true";
-
-    // ✅ Si no hay búsqueda, ocultar los que son "hidden-default"
-    if(q === "" && hiddenDefault){
-      card.style.display = "none";
-      return;
-    }
-
     const match = q === "" || tags.includes(q) || text.includes(q);
+
     card.style.display = match ? "block" : "none";
     if(match) visible++;
   });
