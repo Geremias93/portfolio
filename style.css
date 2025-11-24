@@ -1,193 +1,96 @@
-/* RESET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { background:#0b1220; color:#e5e7eb; min-height:100vh; }
+
+/* Top bar */
+.topbar{
+  height:42px; display:flex; align-items:center; justify-content:space-between;
+  padding:0 14px; border-bottom:1px solid #1f2a3a; background:#0a0f1a;
+}
+.topbar-left{ display:flex; gap:6px; }
+.dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+.red{ background:#ff5f57; } .yellow{ background:#febc2e; } .green{ background:#28c840; }
+.tiny{ color:#94a3b8; font-size:.9rem; }
+
+/* Layout */
+.wrap{ max-width:980px; margin:0 auto; padding:30px 16px 60px; }
+
+/* Hero */
+.hero{ text-align:center; padding:40px 0 24px; }
+.logo{ font-size:4rem; font-weight:800; letter-spacing:-2px; }
+.logo span{ display:inline-block; }
+.b{ color:#60a5fa; } .r{ color:#f87171; } .y{ color:#fbbf24; } .g{ color:#34d399; }
+.subtitle{ margin-top:6px; font-size:1.05rem; color:#cbd5e1; }
+
+/* Search box */
+.searchbox{
+  margin:20px auto 8px; max-width:640px; height:52px;
+  background:#0f172a; border:1px solid #223047; border-radius:999px;
+  display:flex; align-items:center; padding:0 16px; gap:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.searchbox input{
+  flex:1; height:100%; background:transparent; border:none; outline:none;
+  color:#e5e7eb; font-size:1.05rem;
+}
+.search-icon{ opacity:.9; }
+.mic{ opacity:.7; }
+
+.hint{ color:#94a3b8; font-size:.92rem; }
+
+/* Results header */
+.results{ margin-top:10px; }
+.results-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 4px; border-bottom:1px solid #1f2a3a; margin-bottom:14px;
+}
+.tabs{ display:flex; gap:14px; flex-wrap:wrap; }
+.tab{
+  color:#9ca3af; font-size:.95rem; padding:6px 2px; cursor:default;
+}
+.tab.active{ color:#e5e7eb; border-bottom:2px solid #60a5fa; }
+.results-count{ color:#9ca3af; font-size:.9rem; }
+
+/* Result card */
+.result-card{
+  padding:16px 14px; margin:0 0 14px;
+  border-radius:12px; background:#0f172a; border:1px solid #1f2a3a;
+}
+.result-url{ color:#9ca3af; font-size:.87rem; margin-bottom:4px; text-transform:lowercase; }
+.result-title{
+  font-size:1.35rem; color:#93c5fd; margin-bottom:6px; line-height:1.25;
+}
+.result-snippet{ color:#e2e8f0; font-size:1rem; }
+
+/* Chips */
+.chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.chips span{
+  background:#111e36; color:#cbd5e1; border:1px solid #223047;
+  padding:6px 9px; border-radius:999px; font-size:.85rem;
 }
 
-body {
-  background: #0f172a;
-  color: white;
-  line-height: 1.6;
+/* Links */
+.result-links{ margin-top:10px; display:flex; gap:14px; flex-wrap:wrap; }
+.result-links a{
+  color:#38bdf8; text-decoration:none; font-weight:700; font-size:.95rem;
+}
+.result-links a:hover{ text-decoration:underline; }
+
+/* Empty */
+.empty{
+  display:none; text-align:center; margin-top:30px; color:#94a3b8;
+  padding:22px; border:1px dashed #223047; border-radius:12px; background:#0a0f1a;
 }
 
-/* HERO */
-.hero {
-  padding: 90px 20px;
-  text-align: center;
-  background: radial-gradient(circle at top, #111827, #0f172a);
-  border-bottom: 1px solid #243042;
+/* Footer */
+.footer{
+  position:fixed; bottom:0; left:0; right:0;
+  background:#0a0f1a; border-top:1px solid #1f2a3a;
+  text-align:center; padding:10px; color:#94a3b8; font-size:.9rem;
 }
 
-.hero-content {
-  max-width: 900px;
-  margin: auto;
-}
-
-.hero h1 {
-  font-size: 3.2rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  color: #cbd5e1;
-}
-
-.hero-buttons {
-  margin-top: 22px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  background: #38bdf8;
-  color: #0f172a;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 6px;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid #38bdf8;
-  color: white;
-}
-
-.hero-links {
-  margin-top: 18px;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hero-links a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.hero-links a:hover {
-  color: #38bdf8;
-}
-
-/* SECTIONS */
-.section {
-  padding: 55px 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.section h2 {
-  font-size: 2.1rem;
-  margin-bottom: 15px;
-}
-
-/* SKILLS CHIPS */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skills span {
-  background: #1e293b;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  border: 1px solid #243042;
-}
-
-/* PROYECTOS */
-.proyecto {
-  background: #111827;
-  padding: 22px;
-  border-radius: 14px;
-  margin-top: 22px;
-  border: 1px solid #243042;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.02);
-}
-
-.proyecto-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.proyecto h3 {
-  font-size: 1.4rem;
-}
-
-.tag {
-  background: #1e293b;
-  padding: 5px 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  border: 1px solid #243042;
-  color: #cbd5e1;
-}
-
-.proyecto p {
-  color: #e2e8f0;
-  margin-top: 7px;
-}
-
-/* IMÁGENES OPCIONALES */
-.proyecto-imgs {
-  margin-top: 12px;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.proyecto-imgs img {
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid #243042;
-}
-
-/* LINKS */
-.links {
-  margin-top: 12px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.links a {
-  color: #38bdf8;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.links a:hover {
-  text-decoration: underline;
-  opacity: 0.9;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 22px;
-  color: #94a3b8;
-  border-top: 1px solid #243042;
-  margin-top: 10px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .hero h1 { font-size: 2.3rem; }
-  .section h2 { font-size: 1.7rem; }
+/* Responsive */
+@media (max-width:600px){
+  .logo{ font-size:3rem; }
+  .searchbox{ height:48px; }
+  .result-title{ font-size:1.18rem; }
 }
