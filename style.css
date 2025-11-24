@@ -82,37 +82,69 @@ body { background: #fff; color: #202124; min-height: 100vh; }
 
 /* MODAL */
 .modal-backdrop{
-  position: fixed; inset: 0; background: rgba(0,0,0,.35);
-  display: none; align-items: center; justify-content: center; padding: 18px;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999;
 }
+
 .modal{
-  width: 100%; max-width: 820px; background: #fff; border-radius: 12px;
-  padding: 18px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  width: 100%;
+  max-width: 820px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+
+  max-height: 85vh;     /* ✅ esto evita que se corte */
+  overflow-y: auto;     /* ✅ scroll interno */
 }
+
 .modal-close{
-  position:absolute; top:8px; right:10px; border:none; background:transparent;
+  position:absolute; top:8px; right:10px;
+  border:none; background:transparent;
   font-size: 1.3rem; cursor:pointer; color:#5f6368;
 }
 .modal-title{ font-size: 1.4rem; margin: 6px 0 8px; color:#202124;}
 .modal-desc{ color:#4d5156; margin-bottom: 12px; }
 
+/* Video (Shorts visible sí o sí) */
+.video-wrap{
+  margin-top: 12px;
+}
+.video-wrap iframe{
+  width: 100%;
+  aspect-ratio: 9 / 16;  /* ✅ Shorts vertical */
+  height: auto;
+  min-height: 420px;     /* ✅ para que no colapse */
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
 /* Gallery */
 .gallery{
-  display: grid; gap: 10px;
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 .gallery img{
-  width:100%; border-radius: 8px; border:1px solid #eaeaea;
-}
-
-/* Video */
-.video-wrap{ margin-top: 12px; }
-.video-wrap video, .video-wrap iframe{
-  width: 100%; border-radius: 8px; border:1px solid #eaeaea;
+  width:100%;
+  max-height: 520px;     /* ✅ evita recorte por tamaño */
+  object-fit: contain;   /* ✅ NO corta arriba */
+  background: #fff;
+  border-radius: 8px;
+  border:1px solid #eaeaea;
 }
 
 /* Responsive */
 @media (max-width:600px){
   .logo{ font-size: 3.4rem; }
   .result-title{ font-size: 1.15rem; }
+  .video-wrap iframe{ min-height: 320px; }
 }
