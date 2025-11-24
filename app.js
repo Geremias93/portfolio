@@ -40,11 +40,24 @@ const PROJECTS = {
       "assets/plantadvisor3.png"
     ],
     video: null
+  },
+
+  // ✅ NUEVO: SOBRE MÍ (sin imágenes ni vídeo)
+  sobremi: {
+    title: "Sobre mí — Desarrollador Junior Multiplataforma",
+    desc:
+      "Soy un desarrollador junior multiplataforma con base sólida en Java y experiencia creando apps completas. " +
+      "También he trabajado con Python, C en Unity, JavaScript, HTML y CSS. " +
+      "Busco mi primera oportunidad profesional y me motivan los proyectos con impacto real. " +
+      "Vivo en Madrid pero puedo desplazarme y trabajar presencial, híbrido o remoto. " +
+      "Inglés: entiendo bien documentación técnica, aunque hablo poco.",
+    images: [],
+    video: null
   }
 };
 
-function normalize(s){ 
-  return (s || "").toLowerCase().trim(); 
+function normalize(s){
+  return (s || "").toLowerCase().trim();
 }
 
 function updateResults(){
@@ -54,8 +67,15 @@ function updateResults(){
   cards.forEach(card => {
     const tags = normalize(card.dataset.tags);
     const text = normalize(card.innerText);
-    const match = q === "" || tags.includes(q) || text.includes(q);
+    const hiddenDefault = card.dataset.hiddenDefault === "true";
 
+    // ✅ Si no hay búsqueda, ocultar los que son "hidden-default"
+    if(q === "" && hiddenDefault){
+      card.style.display = "none";
+      return;
+    }
+
+    const match = q === "" || tags.includes(q) || text.includes(q);
     card.style.display = match ? "block" : "none";
     if(match) visible++;
   });
@@ -68,11 +88,10 @@ function openModal(projectId){
   const data = PROJECTS[projectId];
   if(!data) return;
 
-  // Título y descripción
   modalTitle.textContent = data.title;
   modalDesc.textContent = data.desc;
 
-  // 1) VIDEO ARRIBA
+  // VIDEO ARRIBA
   modalVideoWrap.innerHTML = "";
   if(data.video && data.video.type === "youtube"){
     const iframe = document.createElement("iframe");
@@ -84,7 +103,7 @@ function openModal(projectId){
     modalVideoWrap.appendChild(iframe);
   }
 
-  // 2) GALERÍA DEBAJO
+  // GALERÍA DEBAJO
   modalGallery.innerHTML = "";
   (data.images || []).forEach(src => {
     const img = document.createElement("img");
@@ -93,11 +112,9 @@ function openModal(projectId){
     modalGallery.appendChild(img);
   });
 
-  // 3) ABRIR MODAL
   modalBackdrop.style.display = "flex";
   modalBackdrop.setAttribute("aria-hidden", "false");
 
-  // 4) SIEMPRE ARRIBA DEL TODO (esto arregla ParkFinder)
   const modalBox = modalBackdrop.querySelector(".modal");
   if(modalBox) modalBox.scrollTop = 0;
 }
