@@ -14,29 +14,31 @@ const modalDesc = document.getElementById("modalDesc");
 const modalGallery = document.getElementById("modalGallery");
 const modalVideoWrap = document.getElementById("modalVideoWrap");
 
-// Datos de proyectos (aquí metes tus capturas/vídeos)
+// Datos de proyectos con TUS nombres reales
 const PROJECTS = {
   parkfinder: {
     title: "ParkFinder — Publicar y reservar plazas",
     desc: "App móvil con mapa interactivo, reservas en tiempo real, publicación de plazas y sistema de usuarios.",
     images: [
-      "assets/parkfinder1.png",
-      "assets/parkfinder2.png",
-      "assets/parkfinder3.png"
+      "assets/parkfinder1.jpg",
+      "assets/parkfinder2.jpg",
+      "assets/parkfinder3.jpg",
+      "assets/parkfinder4.jpg"
     ],
-    // puedes poner video mp4 local o un iframe de youtube
     video: {
-      type: "mp4",
-      src: "assets/parkfinder-demo.mp4"
-      // type: "youtube", src:"https://www.youtube.com/embed/XXXXX"
+      type: "youtube",
+      // YouTube Shorts embebido (forma correcta)
+      src: "https://www.youtube.com/embed/lF0HVb0M7-M"
     }
   },
+
   plantadvisor: {
     title: "PlantAdvisor — Recomendador inteligente de plantas",
-    desc: "App Android con cuestionario, recomendaciones, filtrado y favoritos.",
+    desc: "App Android con cuestionario, recomendaciones, filtrado y sistema de favoritos.",
     images: [
       "assets/plantadvisor1.png",
-      "assets/plantadvisor2.png"
+      "assets/plantadvisor2.png",
+      "assets/plantadvisor3.png"
     ],
     video: null
   }
@@ -80,17 +82,12 @@ function openModal(projectId){
   // Render video if any
   modalVideoWrap.innerHTML = "";
   if(data.video){
-    if(data.video.type === "mp4"){
-      const v = document.createElement("video");
-      v.src = data.video.src;
-      v.controls = true;
-      v.playsInline = true;
-      modalVideoWrap.appendChild(v);
-    } else if(data.video.type === "youtube"){
+    if(data.video.type === "youtube"){
       const iframe = document.createElement("iframe");
       iframe.src = data.video.src;
       iframe.title = data.title;
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
       modalVideoWrap.appendChild(iframe);
     }
