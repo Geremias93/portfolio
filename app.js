@@ -37,7 +37,7 @@ const PROJECTS = {
       "assets/parkfinder3.jpg",
       "assets/parkfinder2.jpg",
       "assets/parkfinder1.jpg",
-      "assets/parkfinder0.png"
+      "assets/parkfinder0.PNG"
     ],
 
     video: {
