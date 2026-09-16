@@ -29,13 +29,15 @@ const PROJECTS = {
 
     // Capturas en orden 7 → 1
     images: [
+      "assets/parkfinder8.jpg"
       "assets/parkfinder7.jpg",
       "assets/parkfinder6.jpg",
       "assets/parkfinder5.jpg",
       "assets/parkfinder4.jpg",
       "assets/parkfinder3.jpg",
       "assets/parkfinder2.jpg",
-      "assets/parkfinder1.jpg"
+      "assets/parkfinder1.jpg",
+      "assets/parkfinder0.png"
     ],
 
     video: {
