@@ -18,6 +18,19 @@ const modalProjectLogo = document.getElementById("modalProjectLogo");
 // Datos de proyectos
 const PROJECTS = {
 
+  shiftlink: {
+    title: "ShiftLink — Gestión de turnos y relevos",
+    desc:
+      "Aplicación web full-stack orientada a equipos que trabajan por turnos. Permite gestionar empresas, locales, turnos, asignaciones, relevos, incidencias y tareas. Backend REST con Java 21 y Spring Boot, autenticación JWT, PostgreSQL, frontend React con TypeScript, Docker, PWA y una demo pública aislada por visitante.",
+    logo: "assets/shiftlink-icon.svg",
+    images: [
+      "assets/shiftlink1.png",
+      "assets/shiftlink2.png",
+      "assets/shiftlink3.png"
+    ],
+    video: null
+  },
+
   parkfinder: {
     title: "ParkFinder — Publicar y reservar plazas",
 
@@ -93,7 +106,14 @@ function updateResults() {
 
   let visible = 0;
 
-  cards.forEach(card => {
+
+document.querySelectorAll(".result-links a").forEach(link => {
+  link.addEventListener("click", e => {
+    e.stopPropagation();
+  });
+});
+
+cards.forEach(card => {
 
     const tags = normalize(card.dataset.tags);
     const text = normalize(card.innerText);
