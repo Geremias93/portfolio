@@ -41,15 +41,58 @@
       </div>
 
       <p class="hint">
-        Prueba a escribir: <b>java</b>, <b>spring boot</b>, <b>react</b>, <b>shiftlink</b> o <b>parkfinder</b>.
+        Prueba a escribir: <b>java</b>, <b>spring boot</b>, <b>react</b>, <b>shiftlink</b> , <b>parkfinder</b> o <b>recuento</b>.
       </p>
     </section>
 
     <!-- RESULTS -->
     <section class="results">
       <div class="results-meta">
-        <span id="resultsCount">Aproximadamente 4 resultados</span>
+        <span id="resultsCount">Aproximadamente 5 resultados</span>
       </div>
+
+
+      <!-- RECUENTO: PROYECTO DESTACADO -->
+      <article class="result-card result-card--featured"
+        data-id="recuento"
+        data-tags="recuento videojuego juego 3d three.js typescript vite javascript simulador electoral votos baloncesto maquinaria automatizacion"
+        tabindex="0"
+        role="button"
+        aria-label="Abrir detalles y trailer de RECUENTO"
+      >
+        <div class="recuento-card-header">
+          <img class="recuento-cover"
+            src="assets/recuento/logo.png"
+            alt="Logo oficial del videojuego RECUENTO"
+            loading="lazy"
+          />
+          <div>
+            <div class="result-url">GeremiasGames · videojuego 3D · proyecto destacado</div>
+            <h2 class="result-title">
+              RECUENTO — 52.812 votos. Y te han dejado solo.
+            </h2>
+            <p class="result-snippet">
+              Videojuego 3D de sátira electoral desarrollado para navegador.
+              Cuenta votos a mano, encesta sobres en canastas y transforma
+              el recuento con maquinaria industrial, mejoras y habilidades.
+            </p>
+          </div>
+        </div>
+
+        <div class="chips">
+          <span>TypeScript</span>
+          <span>Three.js</span>
+          <span>Vite</span>
+          <span>Videojuego 3D</span>
+          <span>Físicas e interacciones</span>
+        </div>
+
+        <div class="result-links">
+          <a href="https://recuento-geremiasgames.onrender.com/"
+            target="_blank" rel="noopener noreferrer">Jugar ahora</a>
+          <a href="#recuento" class="open-recuento-trailer">Ver tráiler</a>
+        </div>
+      </article>
 
       <!-- ShiftLink -->
       <article class="result-card"
@@ -188,6 +231,7 @@
       <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
 
       <h3 id="modalTitle" class="modal-title">Título del proyecto</h3>
+      <div id="modalProjectLogo" class="project-logo"></div>
       <p id="modalDesc" class="modal-desc"></p>
 
       <!-- GALERÍA IMÁGENES -->

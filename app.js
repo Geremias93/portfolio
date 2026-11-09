@@ -18,6 +18,25 @@ const modalProjectLogo = document.getElementById("modalProjectLogo");
 // Datos de proyectos
 const PROJECTS = {
 
+  recuento: {
+    title: "RECUENTO — 52.812 votos. Y te han dejado solo.",
+    desc:
+      "Videojuego 3D de sátira electoral creado por GeremiasGames con " +
+      "TypeScript, Three.js y Vite. El jugador puede clasificar votos " +
+      "manualmente, encestar sobres en canastas y automatizar el proceso " +
+      "con maquinaria industrial. Incluye mejoras, habilidades especiales, " +
+      "interacciones físicas y gestión de urnas. " +
+      "Juega gratis en recuento-geremiasgames.onrender.com.",
+    logo: "assets/recuento/logo.png",
+    images: [],
+    video: {
+      type: "mp4",
+      src: "assets/recuento/trailer.mp4",
+      poster: "assets/recuento/logo.png"
+    }
+  },
+
+
   shiftlink: {
     title: "ShiftLink — Gestión de turnos y relevos",
     desc:
@@ -197,6 +216,19 @@ function openModal(projectId) {
   }
 
 
+
+  // RECUENTO: video local horizontal, sin precarga completa
+  if (data.video && data.video.type === "mp4") {
+    const video = document.createElement("video");
+    video.controls = true;
+    video.preload = "none";
+    video.playsInline = true;
+    video.src = data.video.src;
+    video.poster = data.video.poster;
+    video.setAttribute("aria-label", "Tráiler del videojuego RECUENTO");
+    modalVideoWrap.appendChild(video);
+  }
+
   // =========================
   // GALERÍA
   // =========================
@@ -364,4 +396,14 @@ document.addEventListener(
 window.addEventListener(
   "load",
   updateResults
+);
+
+// Abre el tráiler dentro del portfolio
+document.querySelector(".open-recuento-trailer")?.addEventListener(
+  "click",
+  (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openModal("recuento");
+  }
 );
